@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Estilos de bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <!--Estilos propios-->
+    <link rel="stylesheet" href="./estilos.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!--Script-->
+    <script src="./simulador_ingresos.js" defer></script>
+    <!--Título de página-->
+    <title>Asesor financiero doméstico - Tus ingresos</title>
+  </head>
+  <body>
+    <div>
+      <h1 class="tituloPrincipal">Asesor financiero doméstico</h1>
+      <section id="ingresos" class="centrado">
+        <h2 class="tituloSecundario">INGRESOS</h2>
+        <div id="saludoInicial"></div>
+        <form id="formIngresos">
+          <div class="row">
+            <div class="col">
+              <label for="nombreIngreso">Nombre</label>
+              <input
+                id="nombreIngreso"
+                type="text"
+                class="form-control"
+                placeholder="Por ejemplo 'Sueldo'"
+              />
+            </div>
+            <div class="col">
+              <label for="montoIngreso">Monto $:</label>
+              <input
+                id="montoIngreso"
+                type="number"
+                class="form-control"
+                placeholder="999.99"
+              />
+            </div>
+            <div class="col">
+              <label for="frecuenciaIngreso">Frecuencia</label>
+              <select
+                name="frecuenciaIngreso"
+                id="frecuenciaIngreso"
+                class="form-control"
+              >
+                <option value="1">Mensual</option>
+                <option value="12">Anual</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-danger mt-2 mb-2">
+            agregar
+          </button>
+        </form>
+        <div id="alertaIngresos" class="alerta noMostrar">Por favor asegurate de colocarle un nombre al ingreso y usar "." como separador decimal.</div>
+      </section>
+      <section id="mensajes1" class="sectionInformativa">
+        <article class="registro">
+          <p class="mensaje">Estos son los ingresos que has registrado:</p>
+          <ul id="listaIngresos"></ul>
+        </article>
+        <article class="boton">
+          <p>
+            Una vez que hayas terminado de cagar tus ingresos, presiona
+            continuar
+          </p>
+          <button id="botonCargarIngresos" class="btn btn-light mt-3 mb-3">
+            CONTINUAR >>
+          </button>
+        </article>
+      </section>
+      <section id="mensajes2" class="centrado"></section>
+    </div>
+  </body>
+</html>

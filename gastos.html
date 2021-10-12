@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Estilos de bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <!--Estilos propios-->
+    <link rel="stylesheet" href="./estilos.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!--Script-->
+    <script src="./simulador_gastos.js" defer></script>
+    <!--Título de página-->
+    <title>Asesor financiero doméstico - Tus gastos</title>
+  </head>
+  <body>
+    <div>
+      <h1 class="tituloPrincipal">Asesor financiero doméstico</h1>
+      <section id="gastos" class="centrado">
+        <h2 class="tituloSecundario">GASTOS</h2>
+        <div id="saludoGastos"></div>
+        <form id="formGastos">
+          <div class="row">
+            <div class="col">
+              <label for="nombreGasto">Nombre</label>
+              <input
+                id="nombreGasto"
+                type="text"
+                class="form-control"
+                placeholder="Por ejemplo 'Alquiler', 'Gas', 'Supermercado'"
+              />
+            </div>
+            <div class="col">
+              <label for="montoGasto">Monto $:</label>
+              <input
+                id="montoGasto"
+                type="number"
+                class="form-control"
+                placeholder="999.99"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="frecuenciaGasto">Frecuencia</label>
+              <select
+                name="frecuenciaGasto"
+                id="frecuenciaGasto"
+                class="form-control"
+              >
+                <option value="1">Mensual</option>
+                <option value="2">Bimestral</option>
+                <option value="6">Semestral</option>
+                <option value="12">Anual</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tipoGasto">Tipo de Gasto</label>
+              <select name="tipoGasto" id="tipoGasto" class="form-control">
+                <option value="vivienda">Vivienda</option>
+                <option value="ATyS">
+                  Alimentación, limpieza, supermercado
+                </option>
+                <option value="ATyS">Transporte</option>
+                <option value="ATyS">Servicios</option>
+                <option value="ocio">Ocio</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-danger mt-2 mb-2">
+            agregar
+          </button>
+        </form>
+        <div id="alertaGastos" class="alerta noMostrar">Por favor asegurate de colocarle un nombre al gasto y usar "." como separador decimal.</div>
+      </section>
+      <section id="msjGastos1" class="sectionInformativa">
+        <article class="registro">
+          <p class="mensaje">Estos son los gastos que has registrado:</p>
+          <ul id="listaGastos"></ul>
+        </article>
+        <article class="boton">
+          <p>
+            Una vez que hayas terminado de cagar tus gastos, presiona continuar
+          </p>
+          <button id="botonCargarGastos" class="btn btn-light mt-3 mb-3">
+            CONTINUAR >>
+          </button>
+        </article>
+      </section>
+      <section id="msjGastos2" class="centrado"></section>
+    </div>
+  </body>
+</html>

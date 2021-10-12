@@ -1,27 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./estilos.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
-    <title>Simulador con objetos</title>
-</head>
-<body>
-    <h1 class="titulo">Asesor financiero doméstico</h1>
-
-    <div class="hola">
-        Hola! Esta es el primer ensayo de mi asesor financiero doméstico. La idea
-        es poder ayudarte a ordenar tus números para que puedas optimizar tus
-        gastos y saber por dónde se va plata de más. </br>
-        El proyecto está todavía en su fase inicial, por lo que podrás cargar datos por
-        prompt y recibir informes por alertas. Es un poco engorroso, pero ya estamos 
-        trabajando para que sea más facherito.
-      </div>
-
-    <script src="./simulador.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Estilos de bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <!--Estilos propios-->
+    <link rel="stylesheet" href="./estilos.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!--Script-->
+    <script src="./simulador_bienvenida.js" defer></script>
+    <!--Título de página-->
+    <title>Asesor financiero doméstico</title>
+  </head>
+  <body>
+    <div id="contenedor">
+      <h1 class="tituloPrincipal">Asesor financiero doméstico</h1>
+      <section id="bienvenida" class="centrado">
+        <h2 class="tituloSecundario">¡BIENVENIDA/O!</h2>
+        <p class="mensaje">Por favor ingresa tus datos:</p>
+        <form id="datosPersonales">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre"
+                id="nombre"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Apellido"
+                id="apellido"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-9">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Correo electrónico"
+                id="email"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <button id="btn-datos" type="submit" class="btn btn-danger mb-3">
+                Ingresar >>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div id="alertaMail" class="alerta noMostrar">Por favor completa todos los datos para continuar</div>
+      </section>
+    </div>
+  </body>
 </html>

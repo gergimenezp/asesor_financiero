@@ -1,6 +1,6 @@
 # asesor_financiero
 
-Pequeño asesor finaniero dom�stico
+Pequeño asesor finaniero doméstico
 
 Proyecto final del curso de JavaScript - Gerardo Gimenez Ponce
 

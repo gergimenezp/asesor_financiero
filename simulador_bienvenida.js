@@ -1,39 +1,28 @@
-//VARIABLES
-const contenedorBienvenida = document.getElementById("bienvenida");
-const formDatosPersonales = document.getElementById("datosPersonales");
-const inputNombre = document.getElementById("nombre");
-const inputApellido = document.getElementById("apellido");
-const inputEmail = document.getElementById("email");
-const alertaMail = document.getElementById("alertaMail");
-
 //LIMPIEZA DEL STORAGE PARA VOLVER A SIMULAR DESDE CERO
 localStorage.clear();
 
 //INTERACCION
 
-formDatosPersonales.addEventListener("submit", (e) => {
-  e.preventDefault();
+$('#datosPersonales').submit((e) =>{
+  e.preventDefault()
 
-  const nombre = inputNombre.value;
-  const apellido = inputApellido.value;
-  const email = inputEmail.value;
+  const nombre = $('#nombre').val().trim()
+  const apellido = $('#apellido').val().trim()
+  const email = $('#email').val().trim()
 
-  if (
-    nombre !== "" &&
-    apellido !== "" &&
-    email.includes("@") &&
-    email.includes(".")
-  ) {
+  if (nombre !== "" && apellido !== "" && email.includes("@") && email.includes(".")) {
     localStorage.setItem("nombre", nombre);
     localStorage.setItem("apellido", apellido);
     localStorage.setItem("email", email);
 
-    formDatosPersonales.reset();
+    $('#datosPersonales').trigger("reset")
 
-    alertaMail.classList.add("noMostrar");
+    $('#alertaMail').addClass("noMostrar")
 
-    let aviso = document.createElement("div");
-    aviso.innerHTML = `
+    $('#welcome').remove()
+
+    $('#bienvenida').append(`
+        <div id="welcome" class="mensaje">
         <p>
             ¡Hola ${nombre}!
         </p>
@@ -44,12 +33,10 @@ formDatosPersonales.addEventListener("submit", (e) => {
             <button class="btn btn-light mt-3 mb-3">
                 CONTINUAR >> 
             </button>
-        </a>    
-        `;
-    contenedorBienvenida.appendChild(aviso);
-    aviso.classList.add("mensaje");
-
+        </a>
+        </div>    
+    `)
   } else {
-    alertaMail.classList.remove("noMostrar");
+    $('#alertaMail').removeClass("noMostrar");
   }
-});
+})

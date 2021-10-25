@@ -74,8 +74,8 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: bolder;
   text-align: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .sectionInformativa {
@@ -107,8 +107,8 @@ body {
   font-family: "Lato", sans-serif;
   text-align: center;
   font-weight: bold;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .noMostrar{

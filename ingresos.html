@@ -26,7 +26,7 @@
     <title>Asesor financiero doméstico - Tus ingresos</title>
   </head>
   <body>
-    <div>
+    <div id="contenedorIngresos">
       <h1 class="tituloPrincipal">Asesor financiero doméstico</h1>
       <section id="ingresos" class="centrado">
         <h2 class="tituloSecundario">INGRESOS</h2>
@@ -69,7 +69,7 @@
         </form>
         <div id="alertaIngresos" class="alerta noMostrar">Por favor asegurate de colocarle un nombre al ingreso y usar "." como separador decimal.</div>
       </section>
-      <section id="mensajes1" class="sectionInformativa">
+      <section id="mensajes1" class="sectionInformativa noMostrar">
         <article class="registro">
           <p class="mensaje">Estos son los ingresos que has registrado:</p>
           <ul id="listaIngresos"></ul>
@@ -86,5 +86,6 @@
       </section>
       <section id="mensajes2" class="centrado"></section>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   </body>
 </html>

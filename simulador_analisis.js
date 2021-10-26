@@ -187,7 +187,7 @@ const decilIngresos = () =>{
         De acuerdo a los datos estadísticos más recientes del INDEC, por el nivel 
         de ingresos per cápita de tu grupo familiar, perteneces al decil nº ${decil} de la población.</br>
         En promedio, las familias que están en ese decil tienen un ingreso per cápita de $${iPromedio}. 
-        Eso significa que hay entre un ${90-(decil*10)}% y un ${100-(decil*10)}% de la población que tiene ingresos superiores a los tuyos. 
+        Eso significa que hay entre un ${100.01-(decil*10)}% y un ${109.99-(decil*10)}% de la población que tiene ingresos superiores a los tuyos. 
         Cuanto más chico es ese porcentaje implica que estadísticamente tienes menos posibiidades de aumentar tus ingresos.
       </p>
       <p>

@@ -187,7 +187,7 @@ const decilIngresos = () =>{
         De acuerdo a los datos estadísticos más recientes del INDEC, por el nivel 
         de ingresos per cápita de tu grupo familiar, perteneces al decil nº ${decil} de la población.</br>
         En promedio, las familias que están en ese decil tienen un ingreso per cápita de $${iPromedio}. 
-        Eso significa que hay entre un ${100.01-(decil*10)}% y un ${109.99-(decil*10)}% de la población que tiene ingresos superiores a los tuyos. 
+        Eso significa que hay entre un ${100-(decil*10)}% y un ${(109.99-(decil*10)).toFixed(2)}% de la población que tiene ingresos superiores a los tuyos. 
         Cuanto más chico es ese porcentaje implica que estadísticamente tienes menos posibiidades de aumentar tus ingresos.
       </p>
       <p>
@@ -217,9 +217,14 @@ $('#btnBalanceCuentas').on("click", () => {
   analisisGastosReales("ocio", analisisOcio, gastoRealenOcio, gastoBajoOcio, "15%");
 
   $('#analisis').append(`
-    <button id="btnEstadisticas" class="btn btn-light mt-3 mb-3">
-      CONTINUAR >> 
-    </button>
+    <div class="mensaje sangria">
+      <h5 class="subtitulo">
+        Veamos como se ubica tu nivel de ingresos en la estadística
+      </h5>
+      <button id="btnEstadisticas" class="btn btn-light mt-3 mb-3">
+        CONTINUAR >> 
+      </button>
+    </div>
   `)
   
   $('#btnBalanceCuentas').remove();

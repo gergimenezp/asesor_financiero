@@ -15,17 +15,11 @@ $('#datosPersonales').submit((e) =>{
     localStorage.setItem("apellido", apellido);
     localStorage.setItem("email", email);
 
-    $('#datosPersonales').trigger("reset")
-
-    $('#alertaMail').addClass("noMostrar")
-
-    $('#welcome').remove()
-
-    $('#bienvenida').append(`
+    $('#bienvenida').html(`
         <div id="welcome" class="mensaje">
-        <p>
+        <h2 class="tituloSecundario">
             ¡Hola ${nombre}!
-        </p>
+        </h2>
         <p>
             Ya estamos listos para empezar tu análisis financiero. Cuando estés listo, presioná continuar
         </p>

@@ -47,7 +47,9 @@ $('#formGastos').submit((e) => {
 
     $('#formGastos').trigger('reset')
 
-    $('#alertaGastos').addClass('noMostrar');
+    $('#alertaGastos').addClass('noMostrar')
+
+    $('#msjGastos1').removeClass('noMostrar')
 
     $('#listaGastos').append(`
       <li class="mensaje sangria">

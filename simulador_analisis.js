@@ -2,18 +2,22 @@
 const analisis = document.getElementById("analisis");
 
 //FUNCIONES
-const porcentaje = (pTotal, pPorcion) => pTotal * (pPorcion / 100); //CALCULA UN PORCENTAJE SOBRE UN TOTAL
+
+//CALCULA UN PORCENTAJE SOBRE UN TOTAL
+const porcentaje = (pTotal, pPorcion) => pTotal * (pPorcion / 100); 
 
 const restar = (a, b) => a - b;
 
 const convertirNumeroPositivo = (pValor) => pValor * -1;
 
-function gastoRubro(gastoReal, gastoOptimo) { //CALCULA LA DIFERENCIA ENTRE EL GASTO IDEAL Y EL REAL EN UN RUBRO DETERMINADO
+//CALCULA LA DIFERENCIA ENTRE EL GASTO IDEAL Y EL REAL EN UN RUBRO DETERMINADO
+function gastoRubro(gastoReal, gastoOptimo) { 
   let diferencia = restar(gastoReal, gastoOptimo);
   return diferencia;
 }
 
-function gastoIdealRubro(ingresos, rubro) { //CALCULA LOS GASTOS OPTIMOS EN CADA RUBRO DE ACUERDO A LOS INGRESOS DECLARADOS
+//CALCULA LOS GASTOS OPTIMOS EN CADA RUBRO DE ACUERDO A LOS INGRESOS DECLARADOS
+function gastoIdealRubro(ingresos, rubro) { 
   switch (rubro) {
     case "vivienda":
       return porcentaje(ingresos, 35);
@@ -26,7 +30,8 @@ function gastoIdealRubro(ingresos, rubro) { //CALCULA LOS GASTOS OPTIMOS EN CADA
   }
 }
 
-function balanceCuentas(pIngresos, pGastos) { //DEVUELVE UN MENSAJE ANALIZANDO SI LOS GASTOS SON MAYORES O MENORES QUE LOS INGRESOS
+//DEVUELVE UN MENSAJE ANALIZANDO SI LOS GASTOS SON MAYORES O MENORES QUE LOS INGRESOS
+function balanceCuentas(pIngresos, pGastos) {
   let diferencia = pIngresos - pGastos;
 
   if (pIngresos < pGastos) {
@@ -100,7 +105,8 @@ function balanceCuentas(pIngresos, pGastos) { //DEVUELVE UN MENSAJE ANALIZANDO S
   }
 }
 
-function analisisGastosReales(pTipoGasto, pAnalisis, pGastoReal, pGastoBajo, pPorcentaje) { //DEVUELVE UN MENSAJE DE ACUERDO A SI EL TIPO DE GASTO ESTÁ O NO DENTRO DE PRESUPUESTO
+//DEVUELVE UN MENSAJE DE ACUERDO A SI EL TIPO DE GASTO ESTÁ O NO DENTRO DE PRESUPUESTO
+function analisisGastosReales(pTipoGasto, pAnalisis, pGastoReal, pGastoBajo, pPorcentaje) {
   if (pAnalisis < 0) {
     $('#analisis').append(`
       <div class="analisisTipoGasto">  
@@ -148,19 +154,25 @@ const gastosAlimentacionTransporteyServicios = gastos.filter(
 const gastosOcio = gastos.filter((gto) => gto.tipo == "ocio");
 
 //VARIABLES DE ANALISIS DE DATOS
+
+//CALCULA EL TOTAL DE LOS INGRESOS EN UNA BASE MENSUAL
 let ingresoMensual = ingresos.reduce(
-  (suma, dato) => suma + dato.montoMensualizado, 0); //CALCULA EL TOTAL DE LOS INGRESOS EN UNA BASE MENSUAL
+  (suma, dato) => suma + dato.montoMensualizado, 0);
 
-let gastoRealenVivienda = gastosVivienda.reduce( //CALCULA EL TOTAL DE LOS GASTOS EN VIVINEDA EN UNA BASE MENSUAL
+//CALCULA EL TOTAL DE LOS GASTOS EN VIVINEDA EN UNA BASE MENSUAL
+let gastoRealenVivienda = gastosVivienda.reduce( 
   (suma, gto) => suma + gto.montoMensualizado, 0);
 
-let gastoRealenATyS = gastosAlimentacionTransporteyServicios.reduce( //CALCULA EL TOTAL DE LOS GASTOS EN ATyS EN UNA BASE MENSUAL
+//CALCULA EL TOTAL DE LOS GASTOS EN ATyS EN UNA BASE MENSUAL  
+let gastoRealenATyS = gastosAlimentacionTransporteyServicios.reduce(
   (suma, gto) => suma + gto.montoMensualizado, 0);
 
-let gastoRealenOcio = gastosOcio.reduce( //CALCULA EL TOTAL DE LOS GASTOS EN OCIO EN UNA BASE MENSUAL
+//CALCULA EL TOTAL DE LOS GASTOS EN OCIO EN UNA BASE MENSUAL
+let gastoRealenOcio = gastosOcio.reduce(
   (suma, gto) => suma + gto.montoMensualizado, 0);
 
-let gastoMensual = gastos.reduce( //CALCULA EL TOTAL DE LOS GASTOS EN UNA BASE MENSUAL
+//CALCULA EL TOTAL DE LOS GASTOS EN UNA BASE MENSUAL  
+let gastoMensual = gastos.reduce( 
   (suma, gto) => suma + gto.montoMensualizado, 0);
 
 var gastoViviendaIdeal = gastoIdealRubro(ingresoMensual, "vivienda");
@@ -177,6 +189,7 @@ var gastoBajoOcio = convertirNumeroPositivo(analisisOcio);
 //ANÁLISIS DE DATOS ESTÁTICOS ASINCRÓNICOS
 const decilIngresos = () =>{
   $.get('./decilesIngreso.json', (res)=>{
+    //ENCUENTRA A QUE DECIL DE INGRESOS PERTENECE EL SUJETO
     const decilPertenencia = res.find((ingr) => ingr.iMaximo >= (ingresoMensual/grupoFamiliar))
     const decil = decilPertenencia.decil
     const iPromedio = decilPertenencia.iPromedio
@@ -187,7 +200,7 @@ const decilIngresos = () =>{
         De acuerdo a los datos estadísticos más recientes del INDEC, por el nivel 
         de ingresos per cápita de tu grupo familiar, perteneces al decil nº ${decil} de la población.</br>
         En promedio, las familias que están en ese decil tienen un ingreso per cápita de $${iPromedio}. 
-        Eso significa que hay entre un ${100-(decil*10)}% y un ${(109.99-(decil*10)).toFixed(2)}% de la población que tiene ingresos superiores a los tuyos. 
+        Eso significa que hay cerca de un ${100-(decil*10)}% de la población que tiene ingresos similares o superiores a los tuyos. 
         Cuanto más chico es ese porcentaje implica que estadísticamente tienes menos posibiidades de aumentar tus ingresos.
       </p>
       <p>
